@@ -29,13 +29,13 @@ namespace DecoratorPattern
         static void Main(string[] args)
         {
             IComponent component = new Component();
-            Console.WriteLine("1. Basic component: ", component.ToString());
-            Console.WriteLine("2. A-decorated : ", new DecoratorA(component));
-            Console.WriteLine("3. B-decorated : ", new DecoratorB(component));
-            Console.WriteLine("4. B-A-decorated : ", new DecoratorB(new DecoratorA(component)));
+            Display("1. Basic component: ", component);
+            Display("2. A-decorated : ", new DecoratorA(component));
+            Display("3. B-decorated : ", new DecoratorB(component));
+            Display("4. B-A-decorated : ", new DecoratorB(new DecoratorA(component)));
 
             DecoratorB b = new DecoratorB(new Component());
-            Console.WriteLine("5. A-B-decorated : ", new DecoratorA(b));
+            Display("5. A-B-decorated : ", new DecoratorA(b));
             //Eklenen duurmu ve davranışı çağırmak
             Console.WriteLine("\t\t\t" + b.addedState + b.AddedBehavior());
             Console.ReadKey();
@@ -98,7 +98,7 @@ namespace DecoratorPattern
 
     class Client
     {
-        static void Display(string s, IComponent c)
+        public static void Display(string s, IComponent c)
         {
             Console.WriteLine(s + c.Operation());
         }
