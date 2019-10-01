@@ -29,14 +29,15 @@ namespace DecoratorPattern
         static void Main(string[] args)
         {
             IComponent component = new Component();
-            Display("1. Basic component: ", component);
-            Display("2. A-decorated : ", new DecoratorA(component));
-            Display("3. B-decorated : ", new DecoratorB(component));
-            Display("4. B-A-decorated : ", new DecoratorB(new DecoratorA(component)));
+
+            Client.Display("1. Basic component: ", component);
+            Client.Display("2. A-decorated : ", new DecoratorA(component));
+            Client.Display("3. B-decorated : ", new DecoratorB(component));
+            Client.Display("4. B-A-decorated : ", new DecoratorB(new DecoratorA(component)));
 
             DecoratorB b = new DecoratorB(new Component());
-            Display("5. A-B-decorated : ", new DecoratorA(b));
-            //Eklenen duurmu ve davranışı çağırmak
+            Client.Display("5. A-B-decorated : ", new DecoratorA(b));
+            //Eklenen durmu ve davranışı çağırmak
             Console.WriteLine("\t\t\t" + b.addedState + b.AddedBehavior());
             Console.ReadKey();
         }
