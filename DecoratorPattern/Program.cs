@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DecoratorPattern
 {
     /*Decorator Pattern'ın amacı dinamik olarak nesneye yeni durum ve davranış eklemenin bir yolunu sağlamaktır. Nesne dekore edildiğini bilmediğinden bu durum gelişen sistemler için faydalı bir model haline geliyor. Dekoratör modelindeki önemli bir uygulama noktası, dekoratörlerin hem orjinal sınıfı miras alması hemde bir örneklemin kendisini içermesidir.
-     * 
+      
         Bu desenin temel özelliği, davranışı genişletmek için mirasa dayanmamasıdır. Decorator Pattern ile Arayüzlere herhangi bir yöntem uygulayarak bileşenin başlangıç davranışını değiştirebilirsiniz. Herhangi bir yeni durum ve davranış eklenebilir ve herhangi bir sınıfın public üyesine costruction üzerinden nesne ile erişim sağlanabilir.
 
         Decorator Pattern ne zaman tercih etmeliyim
