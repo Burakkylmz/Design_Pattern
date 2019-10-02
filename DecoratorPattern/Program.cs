@@ -8,13 +8,7 @@ using System.Threading.Tasks;
 namespace DecoratorPattern
 {
     /*Decorator Pattern'ın amacı dinamik olarak nesneye yeni durum ve davranış eklemenin bir yolunu sağlamaktır. Nesne dekore edildiğini bilmediğinden bu durum gelişen sistemler için faydalı bir model haline geliyor. Dekoratör modelindeki önemli bir uygulama noktası, dekoratörlerin hem orjinal sınıfı miras alması hemde bir örneklemin kendisini içermesidir.
-     
-        Decorator Pattern Bileşenleri
-        1.Component: Operasyonların eklenmiş veya değiştirilmiş olabilecek orijinal bir nesne sınıfı (burada böyle bir sınıftan bir kaç tane bulunabilir)
-        2.Operation: IComponent nesnelerinde değiştirilebilecek bir işlem
-        3.IComponent: Dekore edilecek nesne sınıflarını tanımlayan arayüz
-        4.Dekoratör: IComponent interface'sine uyan durum veya davranış ekleyen bir sınıf
-         
+     * 
         Bu desenin temel özelliği, davranışı genişletmek için mirasa dayanmamasıdır. Decorator Pattern ile Arayüzlere herhangi bir yöntem uygulayarak bileşenin başlangıç davranışını değiştirebilirsiniz. Herhangi bir yeni durum ve davranış eklenebilir ve herhangi bir sınıfın public üyesine costruction üzerinden nesne ile erişim sağlanabilir.
 
         Decorator Pattern ne zaman tercih etmeliyim
@@ -28,80 +22,80 @@ namespace DecoratorPattern
     {
         static void Main(string[] args)
         {
-            IComponent component = new Component();
+            IBilesen component = new Bilesen();
 
-            Client.Display("1. Basic component: ", component);
+            Client.Display("1. Basit bileşen: ", component);
             Client.Display("2. A-decorated : ", new DecoratorA(component));
             Client.Display("3. B-decorated : ", new DecoratorB(component));
             Client.Display("4. B-A-decorated : ", new DecoratorB(new DecoratorA(component)));
 
-            DecoratorB b = new DecoratorB(new Component());
+            DecoratorB b = new DecoratorB(new Bilesen());
             Client.Display("5. A-B-decorated : ", new DecoratorA(b));
             //Eklenen durmu ve davranışı çağırmak
-            Console.WriteLine("\t\t\t" + b.addedState + b.AddedBehavior());
+            Console.WriteLine("\t\t\t" + b.addedState + b.EklenenDavranis());
             Console.ReadKey();
         }
     }
 
-    interface IComponent
+    interface IBilesen//Dekore edilecek nesne sınıflarını tanımlayan arayüz
     {
-        string Operation();
+        string Operasyon();
     }
 
-    class Component : IComponent
+    class Bilesen : IBilesen//Operasyonların eklenmiş veya değiştirilmiş olabilecek orijinal bir nesne sınıf
     {
-        public string Operation()
+        public string Operasyon()//IComponent nesnelerinde değiştirilebilecek bir işlem
         {
-            return "I produce network infrastructure";
+            return "Çalıştığım firma için";
         }
     }
 
-    class DecoratorA : IComponent
+    class DecoratorA : IBilesen//IComponent interface'sine uyan durum veya davranış ekleyen bir sınıf
     {
-        IComponent component;
+        IBilesen bilesen;
 
-        public DecoratorA (IComponent c)
+        public DecoratorA (IBilesen b)
         {
-            component = c;
+            bilesen = b;
         }
 
-        public string Operation()
+        public string Operasyon()
         {
-            string s = component.Operation();
-            s += "with Software Defined Network.";
+            string s = bilesen.Operasyon();
+            s += "Yazılım Tanımlı Ağlar ile";
             return s;
         }
     }
 
-    class DecoratorB : IComponent
+    class DecoratorB : IBilesen//IComponent interface'sine uyan durum veya davranış ekleyen bir sınıf
     {
-        IComponent component;
+        IBilesen bilesen;
 
-        public string addedState = "and developmet some robotic process";
+        public string addedState = "ağ altyapısı üretiyorum";
 
-        public DecoratorB(IComponent c)
+        public DecoratorB(IBilesen b)
         {
-            component = c;
+            bilesen = b;
         }
 
-        public string Operation()
+        public string Operasyon()
         {
-            string s = component.Operation();
-            s += "to my company";
+            string s = bilesen.Operasyon();
+            s += "ve bazı robotik süreçler geliştiriyorum.";
             return s;
         }
 
-        public string AddedBehavior()
+        public string EklenenDavranis()
         {
-            return "also I studied my master degree.";
+            return "Ayrıca yüksek lisans öğrencisiyim.";
         }
     }
 
     class Client
     {
-        public static void Display(string s, IComponent c)
+        public static void Display(string s, IBilesen c)
         {
-            Console.WriteLine(s + c.Operation());
+            Console.WriteLine(s + c.Operasyon());
         }
     }
 }
