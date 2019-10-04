@@ -17,44 +17,44 @@ namespace BridgePattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(new Abstraction(new ImplementationA()).Operation());
-            Console.WriteLine(new Abstraction(new ImplementationB()).Operation());
+            Console.WriteLine(new Soyutlama(new Uygulama_A()).Operasyon());
+            Console.WriteLine(new Soyutlama(new Uygulama_B()).Operasyon());
             Console.ReadKey();
         }
     }
 
-    class Abstraction
+    class Soyutlama//client'ın gördüğü arayüz
     {
-        Bridge bridge;
-        public Abstraction(Bridge implementation)
+        Kopru kopru;
+        public Soyutlama(Kopru uygulama)
         {
-            bridge = implementation;
+            kopru = uygulama;
         }
 
-        public string Operation()
+        public string Operasyon()//client tarafından çağrılan bir yöntem
         {
-            return "Abstraction" + "<<<BRIDGE>>>" + bridge.OperationImp();
-        }
-    }
-
-    interface Bridge
-    {
-        string OperationImp();
-    }
-
-    class ImplementationA : Bridge
-    {
-        public string OperationImp()
-        {
-            return "ImplementationA";
+            return "Soyutlama" + "==Koprü==" + kopru.OperasyonUygulaması();
         }
     }
 
-    class ImplementationB : Bridge
+    interface Kopru //Soyutlamanın farklı olabilecek kısımlarını tanımlayan bir interface
     {
-        public string OperationImp()
+        string OperasyonUygulaması();
+    }
+
+    class Uygulama_A : Kopru // Köprü uygulamaları
+    {
+        public string OperasyonUygulaması()
         {
-            return "ImplementationB";
+            return "Uygulama A"; // Köprüde, Soyutlama işleminden çağrılan bir yöntem
+        }
+    }
+
+    class Uygulama_B : Kopru //Köprü uygulamaları
+    {
+        public string OperasyonUygulaması()
+        {
+            return "Uygulama_B";
         }
     }
 }

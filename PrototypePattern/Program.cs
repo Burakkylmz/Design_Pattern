@@ -15,10 +15,19 @@ namespace PrototypePattern
         2.Prototipler aracılığıyla çalışma ananında yeni sınıflar eklemek ve kaldırmak istediğimizde
         3.Sistemdeki sınıf sayısını minimumda tutmak istediğimde
         4.Composite pattern ile arşilemeyi sağlamayı düşündüğümüzde
-        5.Alt sınıfların çoğalmaya başladığı durumlarda Factory Method Pattern yerine düşünülebilir*/
+        5.Alt sınıfların çoğalmaya başladığı durumlarda Factory Method Pattern yerine düşünülebilir
+        
+            Prototip modeli bir sınıfın bir modelini seçer ver gelecekteki tüm durumlar için onu üretici olarak kullanır. Composite and Decorator patterns yoğun olarak faydalınan tasarımlar. Prototipler, nesne başlatmanın maliyetli olduğu durumlarda faydalıdır ve başlatma parametrelerinde birkaç değişiklik olmasını beklersiniz. Bu bağlamda, Prototip modeli, önceden başlatılmış bir prototipin ucuz klonlanmasını destekleyen maliyetli “sıfırdan yaratma” işlemlerinden kaçınabilir. Nesne üretim maliyetlerinin minimize etemk amaçlanmaktadır. 
+             */
 
         static void Main(string[] args)
         {
+
+        }
+
+        class Veri
+        {
+            public string;
         }
     }
 }
